@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+
+    <button id="btnProductos">Obtener Productos</button>
+    <pre id="resultado"></pre>
+
+    <script>
+    document.getElementById('btnProductos').addEventListener('click', () => {
+    fetch('http://localhost:8000/api/ferremas/')
+        .then(response => response.json())
+        .then(data => {
+        document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+        })
+        .catch(error => {
+        document.getElementById('resultado').textContent = 'Error: ' + error;
+        });
+    });
+    </script>
+
+
+</body>
+</html>
